@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<style>
+    *{
+        background-color: blanchedalmond;
+    }
+    #slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-left: 30%;
+
+}
+
+#slider img {
+    display: flex;
+  width: 500px;
+  display: none;
+}
+
+#slider img.active {
+  display: block;
+}
+
+#prev {
+  left: 10px;
+  font-weight: bold;
+}
+
+#next {
+  right: 10px;
+  font-weight: bold;
+  margin-left: 380px;
+} */
+
+body {
+          margin: 20px;
+        }
+
+.error {
+            color: red;
+        }
+
+.success {
+            color: green;
+        }
+
+.password-container {
+            position: relative;
+            display: inline-block;
+        }
+
+.toggle-password {
+            margin-left: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border: none;
+            background-color: rgb(21, 140, 214);
+            color: white;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+.toggle-password:hover {
+            background-color: #0056b3;
+        }
+</style>
+<body>
+
+    <h1>QUE 1</h1>
+    <script>
+        let itemName = "Laptop";
+        let price = 1200;
+        let quantity = 2;
+        let totalPrice = price * quantity;
+        console.log(`Total Price for ${itemName}: $${totalPrice}`);
+        console.log(`Type of itemName: ${itemName}`);
+        console.log(`Type of price: ${price}`);
+        console.log(`Type of quantity: ${quantity}`);
+    </script>
+
+    <h1>QUE 2</h1>
+    <script>
+        function convertToCelsius(fahrenheit) {
+            return (fahrenheit - 32) * 5 / 9;
+        }
+
+        function convertToFahrenheit(celsius) {
+            return (celsius * 9 / 5) + 32;
+        }
+
+        console.log(`32°F to Celsius: ${convertToCelsius(32)}°C`);
+        console.log(`0°C to Fahrenheit: ${convertToFahrenheit(0)}°F`);
+    </script>
+
+    <h1>QUE 3</h1>
+    <script>
+        console.log("Multiplication Table for 7:");
+        for (let i = 1; i <= 10; i++) {
+            console.log(`7 x ${i} = ${7 * i}`);
+        }
+
+        console.log("Numbers from 1 to 10:");
+    </script>
+
+    <h1>QUE 4</h1>
+    <script>
+        const studentMarks = [78, 85, 62, 90, 88];
+        const highestMark = Math.max(...studentMarks);
+        const lowestMark = Math.min(...studentMarks);
+        console.log(`Highest Mark: ${highestMark}`);
+        console.log(`Lowest Mark: ${lowestMark}`);
+
+        const updatedMarks = studentMarks.map(mark => mark + 5);
+        console.log(`Marks after adding grace marks: ${updatedMarks}`);
+
+        const filteredMarks = updatedMarks.filter(mark => mark >= 70);
+        console.log(`Marks after filtering below 70: ${filteredMarks}`);
+    </script>
+
+    <h1>QUE 5</h1>
+    <script>
+        const product = {
+            name: "Smartphone",
+            price: 800,
+            category: "Electronics",
+            getDiscountedPrice(discount) {
+                return this.price - (this.price * discount / 100);
+            }
+        };
+
+        console.log(`Product Name: ${product.name}`);
+        console.log(`Discounted Price (10% off): $${product.getDiscountedPrice(10)}`);
+        console.log(`Product Keys: ${Object.keys(product)}`);
+        console.log(`Product Values: ${Object.values(product)}`);
+    </script>
+
+    <h1>QUE 6</h1>
+    <p>Button Click Count: <span id="clickCount">0</span></p>
+    <button id="clickButton">Click Me!</button>
+    <script>
+        let count = 0;
+        document.getElementById("clickButton").addEventListener("click", function() {
+            count++;
+            document.getElementById("clickCount").innerText = count;
+        });
+    </script>
+
+    <h1>QUE 7</h1>
+    <form id="registrationForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <br>
+        <br>
+        <input type="email" id="email" placeholder="Email" required>
+        <br>
+        <br>
+        <button type="submit">Register</button>
+        <p id="errorMessage" style="color: red;"></p>
+    </form>
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+ event.preventDefault();
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!username || !email) {
+                document.getElementById("errorMessage").innerText = "All fields are required.";
+            } else if (!emailPattern.test(email)) {
+                document.getElementById("errorMessage").innerText = "Please enter a valid email address.";
+            } else {
+                document.getElementById("errorMessage").innerText = "";
+                alert("Registration successful!");
+            }
+        });
+    </script>
+
+<h2>QUE 11</h2>
+<script>
+    function parseJSON(jsonString) {
+        try {
+            const result = JSON.parse(jsonString);
+            console.log("Parsed JSON:", result);
+        } catch (error) {
+            console.error("Invalid JSON:", error.message);
+        }
+    }
+    parseJSON('{"name": "John", "age": 30}');
+    parseJSON('{"name": "John", "age": 30'); 
+</script>
+
+<h2>QUE 12</h2>
+<div class="password-container">
+        <input type="password" id="password" placeholder="Enter your password" />
+        <button class="toggle-password" onclick="togglePassword()">Show</button>
+    </div>
+    <br>
+    <br>
+    <button onclick="validatePassword()">submit</button>
+    <p id="message"></p>
+
+    <script>
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (passwordRegex.test(password)) {
+                messageElement.textContent = "Password is strong!";
+                messageElement.className = "success";
+            } else {
+                messageElement.textContent = "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.";
+                messageElement.className = "error";
+            }
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.querySelector('.toggle-password');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                toggleButton.textContent = "Show";
+            }
+        }
+    </script>
+
+<h2>QUE13</h2>
+<div id="slider">
+    <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/BMW/M5-2025/11821/1719462197562/front-left-side-47.jpg?impolicy=resize&imwidth=480" class="active" alt="Image 1">
+    <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/BMW/X3/11819/1737265651680/front-left-side-47.jpg?impolicy=resize&imwidth=480" alt="Image 2">
+    <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/BMW/XM/10570/1689672872537/front-left-side-47.jpg?impolicy=resize&imwidth=480" alt="Image 3">
+    <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/BMW/2-Series/10577/1689667139509/front-left-side-47.jpg?impolicy=resize&imwidth=480" alt="Image 4">
+    <img src="https://stimg.cardekho.com/images/carexteriorimages/630x420/BMW/iX-2025/12390/1738145025675/front-left-side-47.jpg" alt="Image 5">
+    <br>
+    <button id="prev">Previous</button>
+    <button id="next">Next</button>
+</div>
+<script>
+    const images = document.querySelectorAll('#slider img');
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    }
+
+    document.getElementById('next').addEventListener('click', nextImage);
+    document.getElementById('prev').addEventListener('click', prevImage);
+
+    setInterval(nextImage, 3000);
+</script>
+
+<h2>QUE 14</h2>
+<script type="module">
+    export function add(a, b) {
+        return a + b;
+    }
+
+    export function subtract(a, b) {
+        return a - b;
+    }
+
+    export function multiply(a, b) {
+        return a * b;
+    }
+
+    export function divide(a, b) {
+        if (b === 0) {
+            throw new Error("Cannot divide by zero");
+        }
+        return a / b;
+    }
+
+    console.log("Add: ", add(5, 3));
+    console.log("Subtract: ", subtract(5, 3));
+    console.log("Multiply: ", multiply(5, 3));
+    console.log("Divide: ", divide(5, 3));
+</script>
+
+<h2>QUE 15</h2>
+<script>
+    class Vehicle {
+        constructor(brand, speed, fuel) {
+            this.brand = brand;
+            this.speed = speed;
+            this.fuel = fuel;
+        }
+    }
+
+    class Car extends Vehicle {
+        drive() {
+            console.log(`${this.brand} is driving at ${this.speed} km/h.`);
+        }
+    }
+
+const myCar = new Car("Toyota", 120, "Gasoline");
+    myCar.drive();
+</script>
+
+</body>
+</html>
